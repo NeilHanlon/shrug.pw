@@ -14,3 +14,7 @@ theme = "hello-friend-ng"
   customCSS = ["/styles.css"]
 [params.logo]
   logoHomeLink = false
+
+[caches]
+  [caches.images]
+    dir = ':cacheDir/images'
