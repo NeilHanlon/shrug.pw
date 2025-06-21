@@ -1,0 +1,16 @@
+baseURL = 'https://shrug.pw/'
+languageCode = 'en-us'
+title = '¯\_(ツ)_/¯'
+theme = "hello-friend-ng"
+
+[params]
+  # homeSubtitle = "Simple systems, serious results."
+  contentTypeName = "posts"
+  enableSharingButtons = false
+  enableGlobalLanguageMenu = false
+  disableReadOtherPosts = true
+  enableThemeToggle = false
+  disableHeader = true
+  customCSS = ["/styles.css"]
+[params.logo]
+  logoHomeLink = false
