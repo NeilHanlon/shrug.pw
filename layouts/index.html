@@ -9,10 +9,10 @@
                <img src="{{ .Site.Params.Portrait.Path }}" class="circle" alt="{{ .Site.Params.Portrait.Alt }}" style="max-width:{{ .Site.Params.Portrait.MaxWidth }}" />
             {{ end }}
 
-            <h1 style="font-size: 5em;">
-              <a class="shrug" style="text-decoration: none;" href="https://shrugpw.com">
+            <h1>
+              <a class="shrug" href="https://shrugpw.com">
                 {{- $title := .Page.Title -}}
-                <span aria-label="{{ $title }}">
+                <span id=moveblock aria-label="{{ $title }}">
                   {{- range seq 0 (sub (len $title) 1) -}}
                     <span>{{ substr $title . 1 }}</span>
                   {{- end -}}

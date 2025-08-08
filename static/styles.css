@@ -1,28 +1,65 @@
-.shrug span {
-  display: inline-block;
-  animation: wave 2.4s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite;
+a.shrug { 
+  text-decoration: none;
+  position: fixed;
+  z-index: 9999;
+  display: block;
+  cursor: zoom-in;
+  inset: 0;
 }
 
-.shrug span:nth-child(1)  { animation-delay: 0s;    }
-.shrug span:nth-child(2)  { animation-delay: 0.1s;  }
-.shrug span:nth-child(3)  { animation-delay: 0.2s;  }
-.shrug span:nth-child(4)  { animation-delay: 0.3s;  }
-.shrug span:nth-child(5)  { animation-delay: 0.4s;  }
-.shrug span:nth-child(6)  { animation-delay: 0.5s;  }
-.shrug span:nth-child(7)  { animation-delay: 0.6s;  }
-.shrug span:nth-child(8)  { animation-delay: 0.7s;  }
-.shrug span:nth-child(9)  { animation-delay: 0.8s;  }
+main > div > h1 {
+  font-size: 5em;
+}
 
-@keyframes wave {
-  0%   { transform: translateY(0em);     color: #ff5555; }
-  10%  { transform: translateY(-0.05em); color: #f1fa8c; }
-  20%  { transform: translateY(-0.08em); color: #50fa7b; }
-  30%  { transform: translateY(-0.10em); color: #8be9fd; }
-  40%  { transform: translateY(-0.08em); color: #bd93f9; }
-  50%  { transform: translateY(-0.05em); color: #ff79c6; }
-  60%  { transform: translateY(0em);     color: #ffb86c; }
-  70%  { transform: translateY(0.03em);  color: #f8f8f2; }
-  80%  { transform: translateY(0.05em);  color: #6272a4; }
-  90%  { transform: translateY(0.02em);  color: #50fa7b; }
-  100% { transform: translateY(0em);     color: #ff5555; }
+@media not (prefers-reduced-motion: reduce) {
+  span#moveblock {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    animation: wander 15s ease-in-out infinite alternate;
+    overflow: hidden;
+    max-width: max-content;
+    min-width: auto;
+    width: max-content;
+    white-space: nowrap;
+  }
+
+  @keyframes wander {
+    0%   { transform: translate(-75%, -75%) translate(0vw, 0vh); }
+    20%  { transform: translate(-75%, -75%) translate(-5vw, 8vh); }
+    40%  { transform: translate(-75%, -75%) translate(10vw, -4vh); }
+    60%  { transform: translate(-75%, -75%) translate(-12vw, 6vh); }
+    80%  { transform: translate(-75%, -75%) translate(6vw, -8vh); }
+    100% { transform: translate(-75%, -75%) translate(0vw, 0vh); }
+  }
+
+  .shrug span {
+    display: inline-block;
+    animation: wave 2.4s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite;
+  }
+
+  .shrug span:nth-child(1)  { animation-delay: 0s;    }
+  .shrug span:nth-child(2)  { animation-delay: 0.1s;  }
+  .shrug span:nth-child(3)  { animation-delay: 0.2s;  }
+  .shrug span:nth-child(4)  { animation-delay: 0.3s;  }
+  .shrug span:nth-child(5)  { animation-delay: 0.4s;  }
+  .shrug span:nth-child(6)  { animation-delay: 0.5s;  }
+  .shrug span:nth-child(7)  { animation-delay: 0.6s;  }
+  .shrug span:nth-child(8)  { animation-delay: 0.7s;  }
+  .shrug span:nth-child(9)  { animation-delay: 0.8s;  }
+
+  @keyframes wave {
+    0%   { transform: translateY(0em);     color: #ff5555; }
+    10%  { transform: translateY(-0.05em); color: #f1fa8c; }
+    20%  { transform: translateY(-0.08em); color: #50fa7b; }
+    30%  { transform: translateY(-0.10em); color: #8be9fd; }
+    40%  { transform: translateY(-0.08em); color: #bd93f9; }
+    50%  { transform: translateY(-0.05em); color: #ff79c6; }
+    60%  { transform: translateY(0em);     color: #ffb86c; }
+    70%  { transform: translateY(0.03em);  color: #f8f8f2; }
+    80%  { transform: translateY(0.05em);  color: #6272a4; }
+    90%  { transform: translateY(0.02em);  color: #50fa7b; }
+    100% { transform: translateY(0em);     color: #ff5555; }
+  }
+
 }
