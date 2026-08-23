@@ -2,18 +2,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/lenny/</loc>
+    <loc>https://shrug.pw/lenny/</loc>
   </url><url>
-    <loc>http://localhost:1313/</loc>
+    <loc>https://shrug.pw/</loc>
   </url><url>
-    <loc>http://localhost:1313/nyan/</loc>
+    <loc>https://shrug.pw/nyan/</loc>
   </url><url>
-    <loc>http://localhost:1313/categories/</loc>
+    <loc>https://shrug.pw/categories/</loc>
   </url><url>
-    <loc>http://localhost:1313/signal/</loc>
+    <loc>https://shrug.pw/signal/</loc>
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
+    <loc>https://shrug.pw/tags/</loc>
   </url><url>
-    <loc>http://localhost:1313/touchy/</loc>
+    <loc>https://shrug.pw/touchy/</loc>
   </url>
 </urlset>

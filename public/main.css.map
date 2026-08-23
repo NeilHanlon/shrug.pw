@@ -1,7 +1,7 @@
 {
 	"version": 3,
 	"file": "main.css",
-	"sourceRoot": "/home/neil/dev/shrug.pw/business/shrug.pw",
+	"sourceRoot": "/home/neil/dev/shrug.pw/business/websites/shrug.pw",
 	"sources": [
 		"themes/hello-friend-ng/assets/scss/main.scss",
 		"themes/hello-friend-ng/assets/scss/_normalize.scss",

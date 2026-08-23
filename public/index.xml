@@ -2,37 +2,37 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>¯\_(ツ)_/¯</title>
-    <link>http://localhost:1313/</link>
+    <link>https://shrug.pw/</link>
     <description>Recent content on ¯\_(ツ)_/¯</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://shrug.pw/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>( ͡° ͜ʖ ͡°)</title>
-      <link>http://localhost:1313/lenny/</link>
+      <link>https://shrug.pw/lenny/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/lenny/</guid>
+      <guid>https://shrug.pw/lenny/</guid>
       <description></description>
     </item>
     <item>
       <title>~=[,,_,,]:3</title>
-      <link>http://localhost:1313/nyan/</link>
+      <link>https://shrug.pw/nyan/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/nyan/</guid>
+      <guid>https://shrug.pw/nyan/</guid>
       <description></description>
     </item>
     <item>
       <title>Signal</title>
-      <link>http://localhost:1313/signal/</link>
+      <link>https://shrug.pw/signal/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/signal/</guid>
+      <guid>https://shrug.pw/signal/</guid>
       <description></description>
     </item>
     <item>
       <title>ԅ(≖‿≖ԅ)</title>
-      <link>http://localhost:1313/touchy/</link>
+      <link>https://shrug.pw/touchy/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/touchy/</guid>
+      <guid>https://shrug.pw/touchy/</guid>
       <description></description>
     </item>
   </channel>
