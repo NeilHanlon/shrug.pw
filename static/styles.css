@@ -48,13 +48,27 @@ main > div > h1 {
     will-change: left, transform;
   }
 
-  span#moveblock.wander-y {
+  .wander-y {
     position: relative;
     top: 0;
     display: inline-block;
     animation: wander-y var(--wander-y-dur) ease-in-out var(--wander-y-delay) infinite;
     will-change: top, transform;
   }
+
+  /* Ghost tail: dimmed, aria-hidden copies of the title that run the SAME
+   * wander path with a positive delay, so each lags behind and shows where the
+   * leader just was. All copies start centered at t=0, so the tail streams out
+   * of the center on load. Farther ghosts wait longer, fade more, and blur. */
+  .ghost {
+    color: #f8f8f2;
+    pointer-events: none;
+  }
+  .ghost-1 { --wander-x-delay: .015s; --wander-y-delay: .015s; opacity: .45; }
+  .ghost-2 { --wander-x-delay: .030s; --wander-y-delay: .030s; opacity: .34; filter: blur(.4px); }
+  .ghost-3 { --wander-x-delay: .045s; --wander-y-delay: .045s; opacity: .25; filter: blur(.7px); }
+  .ghost-4 { --wander-x-delay: .060s; --wander-y-delay: .060s; opacity: .17; filter: blur(1px);  }
+  .ghost-5 { --wander-x-delay: .075s; --wander-y-delay: .075s; opacity: .10; filter: blur(1.4px);}
 
   /* Irregular multi-stop paths; first and last stop match for a seamless loop.
    * translateX == -left at every stop keeps the box inside the viewport. */
@@ -78,23 +92,23 @@ main > div > h1 {
     100% { top: 50%; transform: translateY(-50%); }
   }
 
-  /* Wave applies to the letters ONLY (direct children of #moveblock). Scoping
-   * it here — instead of `.shrug span` — is what keeps it from clobbering the
-   * `animation` on the .wander-x / .wander-y wrapper spans. */
-  #moveblock > span {
+  /* Wave applies to the letters ONLY (direct children of a .wander-y — that's
+   * the leader AND every ghost, so the tail streaks through the same colors).
+   * Scoping here — instead of `.shrug span` — keeps it off the wrapper spans. */
+  .wander-y > span {
     display: inline-block;
     animation: wave 2.4s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite;
   }
 
-  #moveblock > span:nth-child(1)  { animation-delay: 0s;    }
-  #moveblock > span:nth-child(2)  { animation-delay: 0.1s;  }
-  #moveblock > span:nth-child(3)  { animation-delay: 0.2s;  }
-  #moveblock > span:nth-child(4)  { animation-delay: 0.3s;  }
-  #moveblock > span:nth-child(5)  { animation-delay: 0.4s;  }
-  #moveblock > span:nth-child(6)  { animation-delay: 0.5s;  }
-  #moveblock > span:nth-child(7)  { animation-delay: 0.6s;  }
-  #moveblock > span:nth-child(8)  { animation-delay: 0.7s;  }
-  #moveblock > span:nth-child(9)  { animation-delay: 0.8s;  }
+  .wander-y > span:nth-child(1)  { animation-delay: 0s;    }
+  .wander-y > span:nth-child(2)  { animation-delay: 0.1s;  }
+  .wander-y > span:nth-child(3)  { animation-delay: 0.2s;  }
+  .wander-y > span:nth-child(4)  { animation-delay: 0.3s;  }
+  .wander-y > span:nth-child(5)  { animation-delay: 0.4s;  }
+  .wander-y > span:nth-child(6)  { animation-delay: 0.5s;  }
+  .wander-y > span:nth-child(7)  { animation-delay: 0.6s;  }
+  .wander-y > span:nth-child(8)  { animation-delay: 0.7s;  }
+  .wander-y > span:nth-child(9)  { animation-delay: 0.8s;  }
 
   @keyframes wave {
     0%   { transform: translateY(0em);     color: #ff5555; }

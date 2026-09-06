@@ -12,6 +12,26 @@
             <h1>
               <a class="shrug" href="https://shrugpw.com">
                 {{- $title := .Page.Title -}}
+                {{- /* Ghost trail (params.ghostTrailCount / .ghostTrailRainbow):
+                       faintest/farthest first, leader painted last (on top).
+                       Rainbow copies get per-letter spans so the wave color-cycle
+                       applies; mono copies are plain text (no wave = flat smear). */ -}}
+                {{- $count := .Site.Params.ghostTrailCount | default 0 -}}
+                {{- if gt $count 0 -}}
+                  {{- range $i := seq $count -1 1 -}}
+                    <span class="wander-x ghost ghost-{{ $i }}" aria-hidden="true">
+                      <span class="wander-y">
+                        {{- if $.Site.Params.ghostTrailRainbow -}}
+                          {{- range seq 0 (sub (len $title) 1) -}}
+                            <span>{{ substr $title . 1 }}</span>
+                          {{- end -}}
+                        {{- else -}}
+                          {{- $title -}}
+                        {{- end -}}
+                      </span>
+                    </span>
+                  {{- end -}}
+                {{- end -}}
                 <span class="wander-x">
                   <span id=moveblock class="wander-y" aria-label="{{ $title }}">
                     {{- range seq 0 (sub (len $title) 1) -}}

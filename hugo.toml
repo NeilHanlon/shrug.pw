@@ -12,6 +12,11 @@ theme = "hello-friend-ng"
   enableThemeToggle = false
   disableHeader = true
   customCSS = ["/styles.css"]
+  # Ghost trail behind the wandering title. Number of trailing copies (0 = off,
+  # max 5 — matching .ghost-N rules in styles.css) and whether they streak
+  # through the rainbow wave (true) or stay a flat mono smear (false).
+  ghostTrailCount = 5
+  ghostTrailRainbow = false
 [params.logo]
   logoHomeLink = false
 
