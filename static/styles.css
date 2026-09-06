@@ -11,42 +11,90 @@ main > div > h1 {
   font-size: 5em;
 }
 
+/* Wandering title.
+ *
+ * Full-screen, responsive, and non-repeating with zero JavaScript.
+ *
+ * Each axis is animated on its own nested element (so each owns its own
+ * `transform`). The trick that keeps the element fully on-screen at ANY
+ * viewport/text size is the invariant  translate<Axis>% == -<edge>%  at every
+ * keyframe: at 0% the box is flush to one edge, at 100% flush to the other, and
+ * in between it is inset by exactly its own size. No measuring required.
+ *
+ * "Randomness" comes from giving the two axes coprime durations, so the 2D path
+ * only repeats after lcm(x, y) seconds (~9 min with the defaults below). The
+ * durations/delays are custom properties so an edge (e.g. Fastly Compute) can
+ * inject a `:root { --wander-x-dur: 23s; ... }` block per request for true
+ * per-visit randomization — still no JS. */
+:root {
+  --wander-x-dur: 19s;   /* coprime with y for a long non-repeating path */
+  --wander-y-dur: 29s;
+  --wander-x-delay: 0s;  /* 0 = start dead-center; an edge can inject a negative
+                          * value to desync the axes / vary the entry per visit */
+  --wander-y-delay: 0s;
+}
+
 @media not (prefers-reduced-motion: reduce) {
-  span#moveblock {
+  /* X carrier: full-height so the inner Y element can travel the whole
+   * viewport; width tracks the text so translateX(-100%) == its own width. */
+  span.wander-x {
     position: fixed;
-    top: 50%;
-    left: 50%;
-    animation: wander 15s ease-in-out infinite alternate;
-    overflow: hidden;
-    max-width: max-content;
-    min-width: auto;
+    top: 0;
+    left: 0;
+    height: 100%;
     width: max-content;
     white-space: nowrap;
+    animation: wander-x var(--wander-x-dur) ease-in-out var(--wander-x-delay) infinite;
+    will-change: left, transform;
   }
 
-  @keyframes wander {
-    0%   { transform: translate(-75%, -75%) translate(0vw, 0vh); }
-    20%  { transform: translate(-75%, -75%) translate(-5vw, 8vh); }
-    40%  { transform: translate(-75%, -75%) translate(10vw, -4vh); }
-    60%  { transform: translate(-75%, -75%) translate(-12vw, 6vh); }
-    80%  { transform: translate(-75%, -75%) translate(6vw, -8vh); }
-    100% { transform: translate(-75%, -75%) translate(0vw, 0vh); }
+  span#moveblock.wander-y {
+    position: relative;
+    top: 0;
+    display: inline-block;
+    animation: wander-y var(--wander-y-dur) ease-in-out var(--wander-y-delay) infinite;
+    will-change: top, transform;
   }
 
-  .shrug span {
+  /* Irregular multi-stop paths; first and last stop match for a seamless loop.
+   * translateX == -left at every stop keeps the box inside the viewport. */
+  /* Both axes start AND end at 50% (dead center), so the title begins centered
+   * and drifts out through the corners before returning. */
+  @keyframes wander-x {
+    0%   { left: 50%; transform: translateX(-50%); }
+    22%  { left: 90%; transform: translateX(-90%); }
+    44%  { left: 15%; transform: translateX(-15%); }
+    67%  { left: 95%; transform: translateX(-95%); }
+    85%  { left:  8%; transform: translateX(-8%);  }
+    100% { left: 50%; transform: translateX(-50%); }
+  }
+
+  @keyframes wander-y {
+    0%   { top: 50%; transform: translateY(-50%); }
+    27%  { top: 92%; transform: translateY(-92%); }
+    48%  { top:  8%; transform: translateY(-8%);  }
+    71%  { top: 72%; transform: translateY(-72%); }
+    89%  { top: 30%; transform: translateY(-30%); }
+    100% { top: 50%; transform: translateY(-50%); }
+  }
+
+  /* Wave applies to the letters ONLY (direct children of #moveblock). Scoping
+   * it here — instead of `.shrug span` — is what keeps it from clobbering the
+   * `animation` on the .wander-x / .wander-y wrapper spans. */
+  #moveblock > span {
     display: inline-block;
     animation: wave 2.4s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite;
   }
 
-  .shrug span:nth-child(1)  { animation-delay: 0s;    }
-  .shrug span:nth-child(2)  { animation-delay: 0.1s;  }
-  .shrug span:nth-child(3)  { animation-delay: 0.2s;  }
-  .shrug span:nth-child(4)  { animation-delay: 0.3s;  }
-  .shrug span:nth-child(5)  { animation-delay: 0.4s;  }
-  .shrug span:nth-child(6)  { animation-delay: 0.5s;  }
-  .shrug span:nth-child(7)  { animation-delay: 0.6s;  }
-  .shrug span:nth-child(8)  { animation-delay: 0.7s;  }
-  .shrug span:nth-child(9)  { animation-delay: 0.8s;  }
+  #moveblock > span:nth-child(1)  { animation-delay: 0s;    }
+  #moveblock > span:nth-child(2)  { animation-delay: 0.1s;  }
+  #moveblock > span:nth-child(3)  { animation-delay: 0.2s;  }
+  #moveblock > span:nth-child(4)  { animation-delay: 0.3s;  }
+  #moveblock > span:nth-child(5)  { animation-delay: 0.4s;  }
+  #moveblock > span:nth-child(6)  { animation-delay: 0.5s;  }
+  #moveblock > span:nth-child(7)  { animation-delay: 0.6s;  }
+  #moveblock > span:nth-child(8)  { animation-delay: 0.7s;  }
+  #moveblock > span:nth-child(9)  { animation-delay: 0.8s;  }
 
   @keyframes wave {
     0%   { transform: translateY(0em);     color: #ff5555; }

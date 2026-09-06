@@ -12,10 +12,12 @@
             <h1>
               <a class="shrug" href="https://shrugpw.com">
                 {{- $title := .Page.Title -}}
-                <span id=moveblock aria-label="{{ $title }}">
-                  {{- range seq 0 (sub (len $title) 1) -}}
-                    <span>{{ substr $title . 1 }}</span>
-                  {{- end -}}
+                <span class="wander-x">
+                  <span id=moveblock class="wander-y" aria-label="{{ $title }}">
+                    {{- range seq 0 (sub (len $title) 1) -}}
+                      <span>{{ substr $title . 1 }}</span>
+                    {{- end -}}
+                  </span>
                 </span>
               </a>
             </h1>
