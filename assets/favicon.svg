@@ -1,10 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" role="img" aria-labelledby="t">
   <title id="t">shrug.pw</title>
-  <style>
-    @media (prefers-color-scheme:dark){.m path{stroke:#dadadb}}
-  </style>
-  <g class="m" fill="none" stroke="#1e1e1e" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter">
-    <path d="M1 4h2.5l2.75 5h3.5l2.75-5H15"/>
-    <path d="M6.25 12.5h3.5"/>
+  <rect width="16" height="16" rx="3" fill="#1e1e1e"/>
+  <g transform="translate(1.4,1.4) scale(0.206)" fill="none" stroke="#dadadb" stroke-width="6" stroke-linecap="square" stroke-linejoin="miter">
+    <path d="M4 17h13l10 17h10l10-17h13"/>
+    <path d="M25 47h14"/>
   </g>
 </svg>
