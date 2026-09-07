@@ -1,1 +1,3 @@
 .well-known
+.claude/
+.hugo-server.log

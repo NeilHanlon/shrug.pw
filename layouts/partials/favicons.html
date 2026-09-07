@@ -1,0 +1,30 @@
+{{- /* shrug.pw favicon + app-icon set — austere family mark.
+       Tabs: transparent responsive mark (ink/off-white via prefers-color-scheme), no box.
+       Home-screen tiles (apple-touch + manifest): opaque ink tile + off-white mark — platforms
+       composite these on a background (iOS fills alpha black; Android maskable crops), so a tile
+       is mandatory here, not the box that was rejected for tabs.
+       All assets content-addressed via fingerprint (hash = cache key; no manual ?v= busting);
+       the manifest is generated so its icon URLs carry the fingerprints too. */ -}}
+{{- $svg := resources.Get "favicon.svg" | fingerprint "sha256" -}}
+{{- $png32 := resources.Get "favicon-32x32.png" | fingerprint "sha256" -}}
+{{- $png16 := resources.Get "favicon-16x16.png" | fingerprint "sha256" -}}
+{{- $ico := resources.Get "favicon.ico" | fingerprint "sha256" -}}
+{{- $touch := resources.Get "apple-touch-icon.png" | fingerprint "sha256" -}}
+{{- $i192 := resources.Get "icon-192.png" | fingerprint "sha256" -}}
+{{- $i512 := resources.Get "icon-512.png" | fingerprint "sha256" -}}
+{{- $manifestData := dict
+      "name" "shrug.pw"
+      "short_name" "shrug"
+      "display" "standalone"
+      "background_color" "#1e1e1e"
+      "theme_color" "#1e1e1e"
+      "icons" (slice
+        (dict "src" $i192.RelPermalink "sizes" "192x192" "type" "image/png" "purpose" "any maskable")
+        (dict "src" $i512.RelPermalink "sizes" "512x512" "type" "image/png" "purpose" "any maskable")) -}}
+{{- $manifest := resources.FromString "site.webmanifest" ($manifestData | jsonify) | fingerprint "sha256" -}}
+<link rel="icon" href="{{ $svg.RelPermalink }}" type="image/svg+xml">
+<link rel="icon" href="{{ $png32.RelPermalink }}" type="image/png" sizes="32x32">
+<link rel="icon" href="{{ $png16.RelPermalink }}" type="image/png" sizes="16x16">
+<link rel="shortcut icon" href="{{ $ico.RelPermalink }}">
+<link rel="apple-touch-icon" sizes="180x180" href="{{ $touch.RelPermalink }}">
+<link rel="manifest" href="{{ $manifest.RelPermalink }}">
